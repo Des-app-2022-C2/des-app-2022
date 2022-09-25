@@ -6,6 +6,9 @@ import Login from './componentes/Login';
 import Datos from './componentes/Datos';
 import Iconos from './componentes/Iconos';
 import Barra from './componentes/Barra';
+import theme from './componentes/theme';
+
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
 
@@ -21,8 +24,9 @@ function App() {
   // },[]);
     
   return (
+    <ThemeProvider theme={theme}>
     
-    <div className="fondo">
+    {/* // <div className="fondo"> */}
       {/* <Cards></Cards> */}
       { pantalla === "login" ? (
         
@@ -34,7 +38,10 @@ function App() {
       {/* <Datos></Datos> */}
       {/* <Iconos></Iconos>
       <Barra></Barra> */}
-    </div>
+     {/* </div> */}
+   </ThemeProvider>
+  
+
   );
 }
 

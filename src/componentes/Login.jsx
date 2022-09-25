@@ -12,7 +12,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import  './Login.css';
+
+import theme from './theme';
 
 function Copyright(props) {
   return (
@@ -27,7 +28,7 @@ function Copyright(props) {
   );
 }
 
-const theme = createTheme();
+//const theme = createTheme();
 
 export default function Login() {
  
@@ -87,7 +88,6 @@ export default function Login() {
             /> */}
             <Button
               type="submit"
-             className='botonIngreso'
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
