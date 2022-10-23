@@ -54,7 +54,7 @@ function Pedidos() {
   return (
     <ThemeProvider theme={Theme1}>
       <Box sx={{ flexGrow: 1 ,m:2}}>
-          <Typography variant="body1" align='center' color='text.primary' >
+          <Typography variant="body1" align='center' >
                    <Header texto={texto} ></Header>
           </Typography>
      </Box>
@@ -62,7 +62,7 @@ function Pedidos() {
      { !(nuevoPedido) ?(
      
         <Box sx={{ flexGrow: 1 ,m:2}}>
-              <Typography variant="body1" align='center' color='primary' >
+              <Typography  color="grisclaro" bgcolor="primary" >
               <BotonNPedido setNuevoPedido={setNuevoPedido}></BotonNPedido>
               </Typography>
             

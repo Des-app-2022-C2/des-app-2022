@@ -64,7 +64,7 @@ export default function Login() {
   return (
     <ThemeProvider theme={Theme1}>
        <Box sx={{ flexGrow: 1 ,m:2}}>
-          <Typography variant="body1" align='center' color='text.primary' >
+          <Typography variant="body1" align='center'  >
                    <Header texto={texto} ></Header>
           </Typography>
      </Box>
@@ -79,9 +79,9 @@ export default function Login() {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, }} color="secondary" >
+          {/* <Avatar sx={{ m: 1, }} color="secondary" >
             <LockOutlinedIcon color="primary"/>
-          </Avatar>
+          </Avatar> */}
           <Typography component="h1" variant="h5">
             INGRESO
           </Typography>
@@ -110,16 +110,39 @@ export default function Login() {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             /> */}
+           <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+           <Grid item xs={6}>   
+            <Button
+              type="submit"
+              fullWidth
+              variant="outlined"
+              sx={{ mt: 3, mb: 2 }}
+              color='secondary'
+             >
+              Registrase
+            </Button>
+            </Grid>
+          
+            <Grid item xs={6}>
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-             
+              color="primary"
+              styled={{textTransform:'none'}}
 
+            
             >
-              INGRESAR
+             Ingresar
             </Button>
+            </Grid></Grid>
+           
+            
+            
+
+
+
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">

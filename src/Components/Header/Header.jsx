@@ -33,7 +33,7 @@ export default function Header({texto}) {
         
       <AppBar style={{ backgroundColor: "#b4e0bc" }} position="static" maxWidth="lg">
         <Toolbar>
-          <Typography variant="h6" align='center'color={"primary"} component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" align='center'color={"grisclaro"} component="div" sx={{ flexGrow: 1 }}>
             {texto}
           </Typography>
           {auth && (
