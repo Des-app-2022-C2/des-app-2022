@@ -54,13 +54,16 @@ export default function Login() {
 
     const data = new FormData(event.currentTarget);
     const datos = getUsuario(data.get('user'), data.get('password'));
-
+    /*
+    Promise.resolve(datos).then(value=>{
+      console.log(value.data[0].admin)
+    })
+    */
     
     Promise.resolve(datos).then(value=>{
-      re_direccion(value[0].admin);
-
+      re_direccion(value.data[0].admin);
     })
-    
+
   };
 
   return (
