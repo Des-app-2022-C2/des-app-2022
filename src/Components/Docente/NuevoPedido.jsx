@@ -51,7 +51,7 @@ export default function NuevoPedido({setNuevoPedido}) {
   const[pedidoReactivos,setPedidoReactivos]=useState([]);
   const[listaReactivos,setListaReactivos]=useState([]);
 
-
+  const[encabezado,setEncabezadoPedido]=useState([]);
 
   
   const navigate=useNavigate();
@@ -65,6 +65,33 @@ export default function NuevoPedido({setNuevoPedido}) {
  const reactivos=[{label:"Alcohol etílico (96° uso medicinal)" ,cas:""},{label:"Acido cítrico anhidro p.a." ,cas:"77-92-9"},{label:"Ácido Fluorhídrico 40% p.a." ,cas:"7664-39-3"},{label:"Acido nítrico 70% p.a." ,cas:"7697-37-2"},{label:"Ácido Oxálico p.a." ,cas:"6153-56-6"},{label:"Almidón soluble" ,cas:"9005-84-9"},{label:"Azul de metileno p.a." ,cas:"122965-43-9"},{label:"Buffer pH 4,01" ,cas:"s/n"},{label:"Buffer pH 7,00" ,cas:"s/n"},{label:"Buffer pH 10,01" ,cas:"s/n"},{label:"Buffer pH 10,00" ,cas:"s/n"},{label:"Calcio carbonato p.a" ,cas:"471-34-1"},{label:"Clorato de potasio" ,cas:"3811-04-09"},
  ]
   
+//CARGA DATOS A PEDIDO
+const cargaEncabezado = async(event) => {
+  event.preventDefault();
+  const data = new FormData(event.currentTarget); 
+  console.log(data.get('fecha_solicitud'))
+
+   setEncabezadoPedido  (  {"docente": {
+        "nombre": "Romina",
+        "apellido": "Vera",
+        "dni": "7897",
+        "matricula": "1233457"
+      },   "descripcion": "Pedido 2",
+      "fecha_solicitud":data.get('fecha_solicitud'),
+      "fecha_utilizacion":"2022/11/10",
+      "numero_laboratorio": "2",
+      "tipo_pedido": "algo",
+      "cantidad_grupos": "2",
+      "observaciones": "algo mas",
+      "materia": "materia",
+      "numero_tp": "2"
+      
+
+      }  );
+}
+
+
+
 
  //CARGA EQUIPO A LA LISTA
   const cargaEquipo = async(event) => {
@@ -185,7 +212,10 @@ console.log({elPedidoREcienteMaterial:pedidoMateriales});
           <Box sx={{ flexGrow: 1 ,md:2 }}>    
            
      
-          <Grid container direction="row"
+
+
+
+          <Grid component="form" onSubmit={cargaEncabezado} noValidate  container direction="row"
             justifyContent="space-around"
             alignItems="center"   
           
@@ -246,13 +276,9 @@ console.log({elPedidoREcienteMaterial:pedidoMateriales});
               autoFocus
             />
             </Grid>
+          
             <Grid item xs={3}>
               <TextField
-              id="cantidad_alumnos"
-              label="cantidad_alumnos"
-              name="cantidad_alumnos"
-              autoComplete="cantidad_alumnos"
-              autoFocus
                   id="time"
                   label="Hora"
                   type="time"
@@ -286,6 +312,34 @@ console.log({elPedidoREcienteMaterial:pedidoMateriales});
               
             </Grid>
             
+            <Grid container direction="row"
+            justifyContent="start"
+            alignItems="center"  spacing={{ xs: 1, md: 1 }} columns={{ xs: 12  }} > 
+            <Grid  item xs={5} container justifyContent="center">
+            <Typography sx={{fontSize: 14 }}  color="text.secondary">
+            Descripcion
+            </Typography>
+            </Grid>
+            <Grid  item xs={1} container justifyContent="center"/>
+            <Grid  item xs={2} container justifyContent="center">
+            <Typography sx={{fontSize: 14}}  color="text.secondary">
+            Cantidad
+            </Typography>
+            </Grid>
+            <Grid  item xs={2} container justifyContent="center"/>
+            <Grid  item xs={1} container justifyContent="center">
+            <Typography sx={{fontSize: 14}} aria-label="simple table"  color="text.secondary">
+            Confirmar
+            </Typography>
+            </Grid>
+            <Grid  item xs={1} container justifyContent="center">
+            <Typography sx={{fontSize: 14}}  color="text.secondary">
+            Desechar
+            </Typography>
+            </Grid>
+            </Grid>
+
+
             <Grid item xs={4}>
 
 
@@ -321,7 +375,7 @@ console.log({elPedidoREcienteMaterial:pedidoMateriales});
               type="submit"
               >
             <Avatar> 
-                                    <AddCircleIcon bgcolor={"secondary"} color={"primary"} />
+                      <AddCircleIcon bgcolor={"secondary"} color={"primary"} />
             </Avatar>
           </Button>                          
             </Grid>
@@ -463,7 +517,7 @@ console.log({elPedidoREcienteMaterial:pedidoMateriales});
               type="submit"
               >
             <Avatar> 
-                                    <AddCircleIcon bgcolor={"secondary"} color={"primary"} />
+                   <AddCircleIcon bgcolor={"secondary"} color={"primary"} />
             </Avatar>
           </Button>                          
             </Grid>
