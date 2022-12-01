@@ -36,14 +36,14 @@ const Item = styled(Paper)(({ theme }) => ({
 function Pedidos() {
   const [nuevoPedido, setNuevoPedido] = useState(false);
   const [texto,setEncabezado]=useState("DOCENTE");
- 
+  const userActual = JSON.parse(localStorage.getItem('usuario'));
   const [listaPedidos, setListaPedidos] = useState([]);
  
 
   useEffect(() => {
     let mounted = true;
     //getListaTxt()
-    getPedidosPorDni(7897)
+    getPedidosPorDni(userActual.dni)
       .then(items => {
         if (mounted) {
           setListaPedidos(items)
