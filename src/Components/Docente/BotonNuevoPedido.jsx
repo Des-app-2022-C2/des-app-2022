@@ -12,7 +12,7 @@ const BotonNPedido = ({setNuevoPedido}) => {
     return ( 
       <ThemeProvider theme={Theme1}>
         
-      {/* //  <Typography component="div" align='rigth'width={200} height={30} color={"blanco.main"} bgcolor={"verdeC.main"}   >  */}
+      
       <Grid container justifyContent="flex-end" 
               >
       <Grid item xs={2} color="white"   bgcolor="primary.main"  style={{borderRadius:8}}>

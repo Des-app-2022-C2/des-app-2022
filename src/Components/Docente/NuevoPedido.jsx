@@ -50,9 +50,11 @@ export default function NuevoPedido({setNuevoPedido}) {
   const userActual = JSON.parse(localStorage.getItem('usuario'));
   const[pedidoEquipos,setPedidoEquipos]=useState([]);
   const[listaEquipos,setListaEquipos]=useState([]);
+  const[equipoElegido,setEquipoElegido]=useState("");
  const [cantidadPedidos,setCantPedido] = useState([]);
 
   const[pedidoMateriales,setPedidoMateriales]=useState([]);
+  const[materialElegido,setMatElegido]=useState("");
   const[listaMateriales,setListaMateriales]=useState([]);
 
   const[pedidoReactivos,setPedidoReactivos]=useState([]);
@@ -107,17 +109,16 @@ export default function NuevoPedido({setNuevoPedido}) {
   const cargaMaterial = async(event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-      
-    listaMateriales.map((item,key)=> (
-      (item.descripcion === data.get('descripcion_material'))?(
-      
-       setPedidoMateriales({       
-          "cantidad": parseInt(data.get('cant_material'),10),
-          "material": item._id
-      })):(console.log(item.descripcion)) ) );
-   
+    setPedidoMateriales({       
+      "cantidad": parseInt(data.get('cant_material'),10),
+      "material": materialElegido._id
+    });};
+    const  setIdElegido = async(event,value) => {
+      event.preventDefault(); 
+      setMatElegido(value._id)
+    
   
- 
+  
    
       
   };
@@ -535,7 +536,7 @@ console.log({elPedidoREcienteMaterial:pedidoMateriales});
                                     id="combo-box-demo"
                                     options={listaMateriales}
                                     getOptionLabel={(option)=>option.descripcion}
-                                    
+                                    onChange={(event, value) => setIdElegido(event,value)}
                                     renderInput={(params) =>{
                                       return(
                                        <TextField {...params} 
