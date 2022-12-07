@@ -16,6 +16,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import {useNavigate} from 'react-router-dom';
 import Header from '../Header/Header'
 import{getUsuario} from '../../Services/getUsuarioService';
+import { fontWeight } from '@mui/system';
 
 function Copyright(props) {
   return (
@@ -35,6 +36,7 @@ function Copyright(props) {
 export default function Login() {
 
   const [texto,setTexto]=React.useState("UNAHUR-DESARROLLO DE APLICACIONES-CARGA DE PEDIDOS DE LABORATORIO")
+  const [isHidden, setIsHidden] = React.useState(true);
   const navigate=useNavigate();
 
   const re_direccion=(usuario)=>{
@@ -54,14 +56,13 @@ export default function Login() {
 
     const data = new FormData(event.currentTarget);
     const datos = getUsuario(data.get('user'), data.get('password'));
-    /*
-    Promise.resolve(datos).then(value=>{
-      console.log(value.data[0].admin)
-    })
-    */
-    
-    Promise.resolve(datos).then(value=>{
+
+    Promise.resolve(datos)
+    .then(value=>{
       re_direccion(value.data[0].admin);
+    })
+    .catch(error => {
+      setIsHidden(false)
     })
 
   };
@@ -111,6 +112,7 @@ export default function Login() {
               id="password"
               autoComplete="current-password"
             />
+            <p hidden={isHidden} style={{color: "red", fontWeight: 700}}>Por favor revise el usuario y/o la contraseña </p>
             {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"

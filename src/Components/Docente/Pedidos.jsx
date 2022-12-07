@@ -45,7 +45,12 @@ function Pedidos() {
     getListaPedidos()
       .then(items => {
         if (mounted) {
-          setListaPedidos(items)
+          setListaPedidos(items);
+          //Crea nuevo objeto date
+          var today = new Date();
+          //Obtener la fecha de hoy en formato 'DD/MM/YYYY'
+          var now = today.toLocaleDateString('es-AR');
+          console.log(now);
         }
       })
     return () => mounted = false;
