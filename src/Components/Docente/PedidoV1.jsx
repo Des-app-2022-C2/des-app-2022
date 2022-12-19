@@ -3,8 +3,9 @@ import { Icon, makeStyles } from "@material-ui/core";
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import Theme1 from '../Theme/Theme1';
 import { ThemeProvider } from '@mui/material/styles';
+import '../Theme/Estilos.css'
 
-import moment from 'moment'
+import moment from 'moment';
 import {
   Box,
   Card,
@@ -17,7 +18,10 @@ import {
 } from "@material-ui/core";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import PedidoDetalle from "../Laboratorio/PedidoDetalle";
+import { borderLeftColor } from "@mui/system";
+import { BorderColor } from "@material-ui/icons";
 
+const borderRadius = 15;
 const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
@@ -26,11 +30,35 @@ const useStyles = makeStyles(() => ({
     
   
   },
+
+  card: {
+    // borderImageSource: "linear-gradient(to left,#009688, #1de9b6)",
+    border: "4px solid",
+    borderImageSlice: 1,
+    borderColor:"#0097A2",
+   // borderLeftColor:" #1de9b6",
+   // borderRightColor:"#1de9b6",
+    // backgroundColor: "#b4e0bc",
+    // backgroundColor: "linear-gradient(to left,#009688, #1de9b6)",
+    //backgroundImage:"linear-gradient(to right,#A6D1B0, #DFF7F9)",toam uno
+    backgroundImage:"linear-gradient(to bottom right,#A6D1B0, #E8F4EB)",
+    // backgroundImage:"linear-gradient(#A6D1B0, #26a69a,#A6D1B0)",
+   // backgroundImage:"linear-gradient(#A6D1B0 ,#26a69a ,#A6D1B0 )",
+
+   
+   
+    //borderBottomRightRadius:15,
+    borderRadius,
+    
+
+}
 }));
 
 
+
 function PedidoV1({ pedido }) {
-  const { root } = useStyles();
+  const { root,card } = useStyles();
+
 
   const {
     descripcion,
@@ -62,13 +90,14 @@ function PedidoV1({ pedido }) {
       <Box sx={{m:10}} styles={{display: "flex",
     margin:"8px",
     height:"240px" }} padding="2px">
-        <Card style={{ backgroundColor: "#b4e0bc",borderRadius: 15 }}>
-          <CardActionArea onClick={handleClickOpen('body')}>
+        {/* <Card > */}
+        <Card  className={card} >  
+          <CardActionArea  onClick={handleClickOpen('body')} >
             <CardHeader
               style={{ textAlign: "left" }}
               avatar={
-                <Avatar>
-                  <AssignmentIcon />
+                <Avatar style={{color:"#26a69a"}}>
+                  <AssignmentIcon   />
                 </Avatar>
               }
               title={`Pedido número ${descripcion}`}

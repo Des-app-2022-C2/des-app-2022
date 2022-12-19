@@ -27,6 +27,9 @@ const Theme1=createTheme({
         },
         rojo:{
             main:"#ba000d"
+        },
+        colorinche:{
+            main:"linear-gradient(to left,#009688, #1de9b6)"
         }
        
     }

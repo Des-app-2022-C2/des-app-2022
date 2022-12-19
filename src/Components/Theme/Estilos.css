@@ -1,0 +1,18 @@
+.cardPedido{
+
+  background-color: "#b4e0bc";
+
+  border: 3px solid;
+    padding: 1rem;
+    /* scolor: white; */
+    /* border-width: 3px;
+    border-style: solid; */
+   /* // background-image: conic-gradient(#009688, yellow, #1de9b6); */
+    border-radius: 30;
+    border-image: linear-gradient(to left,#009688, #1de9b6)1 100%;
+      /* linear-gradient(
+        to bottom, 
+        red, 
+        rgba(0, 0, 0, 0)
+      ) 1 100%; */
+  }
