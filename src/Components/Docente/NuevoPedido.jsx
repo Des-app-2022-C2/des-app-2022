@@ -40,6 +40,8 @@ import MenuItem from '@mui/material/MenuItem';
 //import { unstable_renderSubtreeIntoContainer } from 'react-dom';
 import SendIcon from '@mui/icons-material/Send';
 import ReplyAllIcon from '@mui/icons-material/ReplyAll';
+import IconButton from '@mui/material/IconButton'
+
 
 
 
@@ -406,7 +408,12 @@ const  set_IdReactivo=(event,value) => {    setReacElegido(value); console.log("
            <Grid  item xs={2}  justifyContent="flex-end"></Grid>
 
            <Grid  item xs={1}  justifyContent="flex-end">
-                <Button fullWidth
+           <IconButton aria-label="" 
+              //  onClick={}
+              >
+                <AddCircleIcon   fontSize="large" bgcolor={"secondary"} color={"primary"} />
+              </IconButton>
+                {/* <Button fullWidth
                     margin="normal"
                   variant="text"
                   type="submit"
@@ -414,7 +421,7 @@ const  set_IdReactivo=(event,value) => {    setReacElegido(value); console.log("
                 <Avatar> 
                           <AddCircleIcon bgcolor={"secondary"} color={"primary"} />
                 </Avatar>
-              </Button>                          
+              </Button>                           */}
             </Grid>
             </Grid>                        
             </Grid>
@@ -518,20 +525,21 @@ const  set_IdReactivo=(event,value) => {    setReacElegido(value); console.log("
             </Grid>
             <Grid  item xs={2} container justifyContent="center"/>
             <Grid  item xs={1} container justifyContent="center">
-            <Button fullWidth
-                margin="normal"
-              variant="text"
-              type="submit"
+              <IconButton aria-label="" 
+              //  onClick={}
               >
-            <Avatar> 
-                                    <AddCircleIcon bgcolor={"secondary"} color={"primary"} />
-            </Avatar>
-          </Button>                          
+                <AddCircleIcon  fontSize={'large'} bgcolor={"secondary"} color={"primary"} />
+              </IconButton>
+            
             </Grid>
             <Grid  item xs={1} container justifyContent="center">
-            <Avatar> 
-                                    <DeleteForeverIcon color={"rojo"} />
-                                    </Avatar> 
+              <IconButton aria-label=""
+              //  onClick={}
+               >
+                <DeleteForeverIcon color={"rojo"}   fontSize={'large'}  /> 
+                
+              </IconButton>
+           
             </Grid>
             </Grid>        
        <Grid></Grid>       
@@ -632,7 +640,12 @@ const  set_IdReactivo=(event,value) => {    setReacElegido(value); console.log("
             </Grid>
             <Grid  item xs={2} container justifyContent="center"/>
             <Grid  item xs={1} container justifyContent="center">
-            <Button fullWidth
+            <IconButton aria-label="" 
+              //  onClick={}
+              >
+                <AddCircleIcon  fontSize={'large'} bgcolor={"secondary"} color={"primary"} />
+              </IconButton>
+            {/* <Button fullWidth
                 margin="normal"
               variant="text"
               type="submit"
@@ -640,13 +653,20 @@ const  set_IdReactivo=(event,value) => {    setReacElegido(value); console.log("
             <Avatar> 
                                     <AddCircleIcon bgcolor={"secondary"} color={"primary"} />
                                     </Avatar>
-          </Button>  
+          </Button>   */}
            
             </Grid>
             <Grid  item xs={1} container justifyContent="center">
-            <Avatar> 
+            <IconButton aria-label=""
+              //  onClick={}
+               >
+                <DeleteForeverIcon color={"rojo"}   fontSize={'large'}  /> 
+                
+              </IconButton>
+             
+            {/* <Avatar> 
                                     <DeleteForeverIcon color={"rojo"} />
-                                    </Avatar> 
+                                    </Avatar>  */}
             </Grid>
             </Grid>        
        <Grid></Grid>       
@@ -793,14 +813,14 @@ const  set_IdReactivo=(event,value) => {    setReacElegido(value); console.log("
             </Grid>
             <Grid  item xs={5} container justifyContent="center"></Grid>
             <Grid  item xs={1} container justifyContent="end">
-            <Typography sx={{fontSize: 14}} aria-label="simple table"  color="text.secondary">
-            Confirmar
-            </Typography>
+                <Typography sx={{fontSize: 14}} aria-label="simple table"  color="text.secondary">
+                Confirmar
+                </Typography>
             </Grid>
             <Grid  item xs={1} container justifyContent="end">
-            <Typography sx={{fontSize: 14}}  color="text.secondary">
-            Desechar
-            </Typography>
+                <Typography sx={{fontSize: 14}}  color="text.secondary">
+                Desechar
+                </Typography>
             </Grid>
             
             
@@ -902,8 +922,14 @@ const  set_IdReactivo=(event,value) => {    setReacElegido(value); console.log("
               </FormControl>
  
             </Grid>  
-            <Grid  item xs={1} container justifyContent="center" marginLeft={11}>
-            <Button fullWidth
+            <Grid  item xs={1} container ></Grid>
+            <Grid  item xs={1} container justifyContent="center" >
+            <IconButton aria-label="" 
+              //  onClick={}
+              >
+                <AddCircleIcon  fontSize={'large'} bgcolor={"secondary"} color={"primary"} />
+              </IconButton>
+            {/* <Button fullWidth
                 margin="normal"
               variant="text"
               type="submit"
@@ -911,13 +937,20 @@ const  set_IdReactivo=(event,value) => {    setReacElegido(value); console.log("
             <Avatar> 
                                     <AddCircleIcon bgcolor={"secondary"} color={"primary"} />
                                     </Avatar>
-           </Button>    
+           </Button>     */}
             
             </Grid>
-            <Grid  item xs={1} container justifyContent="center">
-            <Avatar> 
+            <Grid  item xs={1} container >
+            <IconButton aria-label=""
+              //  onClick={}
+               >
+                <DeleteForeverIcon color={"rojo"}   fontSize={'large'}  /> 
+                
+              </IconButton>
+           
+            {/* <Avatar> 
                                     <DeleteForeverIcon color={"rojo"} />
-                                    </Avatar> 
+                                    </Avatar>  */}
             </Grid>
             </Grid>       
        <Grid></Grid>       

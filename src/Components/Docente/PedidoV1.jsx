@@ -21,7 +21,7 @@ import PedidoDetalle from "../Laboratorio/PedidoDetalle";
 import { borderLeftColor } from "@mui/system";
 import { BorderColor } from "@material-ui/icons";
 
-const borderRadius = 15;
+//const borderRadius = 15;
 const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
@@ -33,7 +33,7 @@ const useStyles = makeStyles(() => ({
 
   card: {
     // borderImageSource: "linear-gradient(to left,#009688, #1de9b6)",
-    border: "4px solid",
+    border: "2px solid",
     borderImageSlice: 1,
     borderColor:"#0097A2",
    // borderLeftColor:" #1de9b6",
@@ -47,8 +47,8 @@ const useStyles = makeStyles(() => ({
 
    
    
-    //borderBottomRightRadius:15,
-    borderRadius,
+   borderRadius:15,
+   // borderRadius,
     
 
 }
