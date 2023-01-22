@@ -30,6 +30,9 @@ const Theme1=createTheme({
         },
         colorinche:{
             main:"linear-gradient(to left,#009688, #1de9b6)"
+        },
+        borde:{
+            main:"#bdbdbd"
         }
        
     }
