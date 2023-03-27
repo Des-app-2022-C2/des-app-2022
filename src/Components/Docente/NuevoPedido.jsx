@@ -8,7 +8,7 @@ import TextField from '@mui/material/TextField';
 
 
 
-import {Grid,Box} from '@mui/material';
+import { Grid, Box } from '@mui/material';
 
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
@@ -443,9 +443,9 @@ export default function NuevoPedido({ setNuevoPedido }) {
             spacing={{ xs: 1, md: 1 }} columns={{ xs: 12 }}
             
             > */}
-            
-             
-            
+
+
+
             <PedidoEquipos
 
               cargaEquipo={cargaEquipo}
@@ -453,8 +453,8 @@ export default function NuevoPedido({ setNuevoPedido }) {
               set_IdEquip={set_IdEquip}
 
             />
-            
-            
+
+
             {/* </Grid> */}
             {/* COMIENZA CONTENEDOR DE MATERIALES */}
 

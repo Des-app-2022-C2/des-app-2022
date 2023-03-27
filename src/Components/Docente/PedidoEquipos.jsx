@@ -1,11 +1,12 @@
 import React from 'react'
-import { Typography, ThemeProvider } from '@material-ui/core';
-import { IconButton, Autocomplete, TextField, Box, Grid } from '@mui/material';
+
+import { IconButton, Autocomplete, TextField, Box, Grid,Typography, ThemeProvider } from '@mui/material';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 import laboratorio from '../Image/biologia.png';
-import { red } from '@material-ui/core/colors';
+import { margin } from '@mui/system';
+
 const PedidoEquipos = (props) => {
 
 
@@ -15,14 +16,17 @@ const PedidoEquipos = (props) => {
         <Grid container direction="row"
             justifyContent="space-around"
             alignItems="center"
-            spacing={{ xs: 1, md: 1 }} columns={{ xs: 12 }}>
+            spacing={{ xs: 1, md: 1 }} columns={{ xs: 12 }}
+           >
+
             <Grid item xs={12} >
                 <Box
                     border={1}
                     borderColor={"borde.main"}
                     borderRadius={5}
                     padding={1}
-                    margin={1}
+                   
+                   
                 >
 
                     {/* TITULO */}
