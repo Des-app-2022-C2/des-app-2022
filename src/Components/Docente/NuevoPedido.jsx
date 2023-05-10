@@ -177,7 +177,7 @@ export default function NuevoPedido() {
     const cargar_Nuevos_Equipos = pedidoEquipos.filter(eq => eq.equipo !== event._id)
     setPedidoEquipos(cargar_Nuevos_Equipos);
 
-    console.log(event._id)
+    
   }
 
   const set_IdEquip = (event, value) => { setEquipoElegido(value); };
@@ -217,7 +217,7 @@ export default function NuevoPedido() {
   // ELIMINAR MATERIAL DE LA LISTA
 
   const eliminarMaterial = (event) => {
-    console.log(event)
+   
     const pedido_MaterialesVer = verMasMateriales.filter
       (mate => mate.material._id !== event._id);
     setverMasMateriales(pedido_MaterialesVer);
@@ -225,7 +225,7 @@ export default function NuevoPedido() {
     const pedido_Materiales = pedidoMateriales.filter
       (mate => mate.material !== event._id);
     setPedidoMateriales(pedido_Materiales);
-    console.log(event._id)
+    
   }
 
 

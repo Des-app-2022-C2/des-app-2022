@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Grid, TextField } from '@material-ui/core';
 
 
@@ -97,6 +97,12 @@ function AsignarLaboratorio(pedido,
 
 
   }
+useEffect(() => {
+ 
+
+  return () => {    
+  }
+}, [edificioElegido,laboAsignado,estado_ped])
 
   return (
     <Grid container direction='row'
@@ -151,7 +157,7 @@ function AsignarLaboratorio(pedido,
                 value={edificioElegido}
                 label="edificio"
                 onChange={edificio_elegido}
-                
+                size={1}
                 // name='edificio'
               >
                  <MenuItem sx={{ fontSize: 10 }} value={" "}> </MenuItem>

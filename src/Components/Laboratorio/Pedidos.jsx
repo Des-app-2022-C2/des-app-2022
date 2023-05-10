@@ -37,14 +37,16 @@ function Pedidos() {
         }
       })
     return () => mounted = false;
-  }, [])
+  }, [listaPedidos])
 
   return (
     <ThemeProvider theme={Theme1}>
       <Box sx={{ flexGrow: 1, m: 2 }}>
         <Header texto={texto} ></Header>
       </Box>
-      <Filtros></Filtros>
+      <Filtros
+      setListaPedidos={setListaPedidos}
+      ></Filtros>
       {(listaPedidos.length < 1) ?
         (<Box sx={{ flexGrow: 1, md: 2 }}><NoEncontrados /></Box>)
         : (

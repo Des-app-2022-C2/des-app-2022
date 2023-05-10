@@ -43,6 +43,7 @@ function Pedidos() {
     let mounted = true;
     const userActual = JSON.parse(localStorage.getItem('usuario'));
     setEsAdmin(userActual.admin)
+  
     getPedidosPorDni(userActual.dni)
       .then(items => {
         if (mounted) {
