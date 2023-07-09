@@ -180,7 +180,7 @@ export default function Filtros(props) {
                             </Typography>
                         </Grid>
 
-                        <Grid item xs={1}
+                        <Grid item xs={2}
                         //  height={50} 
 
                         //  bgcolor={"secondary.main"} borderRadius={2}
@@ -193,7 +193,7 @@ export default function Filtros(props) {
                                 bgcolor={"secondary.main"}   >
                                 <Button
                                     fullWidth
-                                    style={{ height: 50, borderRadius: 8, bgcolor: "secondary" }}
+                                    style={{ height: 60, borderRadius: 8, bgcolor: "secondary" }}
                                     margin="normal"
                                     variant="contained"
                                     bgcolor={"secondary.main"}
