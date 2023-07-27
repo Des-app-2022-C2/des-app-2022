@@ -2,8 +2,16 @@ import React, { useState } from "react";
 import ReplyAllIcon from '@mui/icons-material/ReplyAll';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
+// import DialogContentText from '@mui/material/DialogContentText';
+// import DialogTitle from '@mui/material/DialogTitle';
+// import Table from '@mui/material/Table';
+// import TableBody from '@mui/material/TableBody';
 import SendIcon from '@mui/icons-material/Send';
+// import TableContainer from '@mui/material/TableContainer';
+
 import Typography from '@mui/material/Typography';
+// import Paper from '@mui/material/Paper';
+// import moment from 'moment'
 import Grid from '@mui/material/Grid';
 import pipeta from '../Image/pipeta.png';
 import { Autocomplete, TextField, ThemeProvider } from '@mui/material';
@@ -26,7 +34,7 @@ function AltaMaterial(
 
     }
 ) {
-    const [error, setError] = useState("none")
+    const [error,setError]=useState("none")
     const [openMensaje, setOpenMensaje] = useState(false);
     const [mensajeSalida, setMensajeSalida] = useState("");
     const cargaMaterial = async (event) => {
@@ -36,23 +44,23 @@ function AltaMaterial(
         console.log(data.get('descripcion'));
         console.log(data.get('stock'));
 
-        if (data.get('clase') !== "" && data.get('descripcion') !== "" && data.get('stock') !== "") {
+        if (data.get('clase') !== "" &&  data.get('descripcion') !== "" && data.get('stock') !== "") {
             setError("none")
-
-            const dato = {
-                "clase": data.get('clase'),
-                "descripcion": (data.get('descripcion').toUpperCase()),
-                "stock": parseInt(data.get('stock')),
-                "unidadMedida": "UNI"
-            }
-
-            postMaterial(dato)
-            setError("none")
-            setOpen(false);
-            setOpenMensaje(true);
-            setMensajeSalida(dato);
+       
+        const dato = {
+            "clase": data.get('clase'),
+            "descripcion": (data.get('descripcion').toUpperCase()),
+            "stock": parseInt(data.get('stock')),
+            "unidadMedida": "UNI"
         }
-        else { setError("block") }
+       
+        postMaterial(dato)
+        setError("none")
+        setOpen(false);
+        setOpenMensaje(true);
+        setMensajeSalida(dato);
+    }
+        else { setError("block")}
 
 
     };
@@ -68,15 +76,19 @@ function AltaMaterial(
                 aria-labelledby="scroll-dialog-title"
                 aria-describedby="scroll-dialog-description"
                 fullWidth
-                sx={{ padding: 2 }}
+                sx={{padding: 2}}
 
             >
-
+                
                 <DialogContent
                     dividers={scroll === 'paper'
                     }
                     sx={{
-                        padding: 2, borderRadius: 4, margin: 3
+                        /*'--Grid-borderWidth': '1px', borderTop: 'var(--Grid-borderWidth) solid',
+                        borderLeft: 'var(--Grid-borderWidth) solid',
+                        borderRight: 'var(--Grid-borderWidth) solid',
+                        borderBottom: 'var(--Grid-borderWidth) solid',
+                        borderColor: 'divider',*/ padding: 2, borderRadius: 4, margin: 3
 
                     }}
 
@@ -100,7 +112,7 @@ function AltaMaterial(
                                     Material
                                 </Typography>
                             </Grid>
-                            <Grid item xs={6} display={error} container justifyContent="start">
+                            <Grid item xs={6}  display={error} container justifyContent="start">
                                 <Typography sx={{ fontSize: 20 }} color="error">
                                     FALTAN CARGAR DATOS
                                 </Typography>
@@ -120,7 +132,7 @@ function AltaMaterial(
                                     id="descripcion"
                                     label="Descripcion"
                                     name="descripcion"
-                                    inputProps={{ minLength: 5, maxLength: 50 }}
+                                    inputProps={{ minLength: 5, maxLength: 50}}
                                     InputLabelProps={{ shrink: true }}
                                     // autoComplete="descripcion"
                                     autoFocus
@@ -152,7 +164,7 @@ function AltaMaterial(
                                             <MenuItem sx={{ fontSize: 12 }} value={" "}> </MenuItem>
                                             <MenuItem sx={{ fontSize: 12 }} value={"MATERIALES"}>MATERIALES</MenuItem>
                                             <MenuItem sx={{ fontSize: 12 }} value={"MATERIAL VIDRIO"}>MATERIAL VIDRIO</MenuItem>
-
+             
                                         </Select>
                                     </FormControl>
 
@@ -182,7 +194,7 @@ function AltaMaterial(
                             </Grid>
 
                         </Grid>
-
+     
 
                         <Grid container direction="row"
                             justifyContent="space-around"
@@ -239,7 +251,7 @@ function AltaMaterial(
 
                     </Grid>
 
-
+                 
 
 
 

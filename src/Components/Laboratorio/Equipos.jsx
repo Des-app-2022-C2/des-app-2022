@@ -38,13 +38,13 @@ export default function Equipos() {
   const [listaEquipos, setListaEquipos] = useState([]);
   const [busqueda, setBusqueda] = useState('');
   const [resetPage, setResetPage] = useState(false);
-
-  const [verEdicion, setVerEdicion] = useState("none")
+  
+  const [verEdicion,setVerEdicion]=useState("none")
   const [open, setOpen] = React.useState("");
-
+  
   const [scroll, setScroll] = React.useState('paper');
-  const [elegido, setElegido] = useState({});
-
+  const [elegido,setElegido]=useState({});
+  
   const handleClickOpen = (scrollType) => () => {
     setOpen(true);
     setScroll(scrollType);
@@ -60,7 +60,7 @@ export default function Equipos() {
     getListaEquiposFiltrada(busqueda)
       .then((equipos) => setListaEquipos(equipos))
       .catch((error) => console.error(error));
-  }, [busqueda, open, verEdicion]);
+  }, [busqueda, open,verEdicion]);
 
   const handleBuscar = (term) => {
     setBusqueda(term);
@@ -114,20 +114,20 @@ export default function Equipos() {
             justifyContent="start"
             alignItems="center"
             display={verEdicion}>
-            <ModEquipo
+              <ModEquipo
               setVerEdicion={setVerEdicion}
               elegido={elegido}
               setElegido={setElegido}
 
-            />
-          </Grid>
+              />
+            </Grid>
           <Lista listaEquipos={listaEquipos}
-            elegido={elegido}
-            setElegido={setElegido}
-            setVerEdicion={setVerEdicion}
-            setResetPage={setResetPage} resetPage={resetPage}
+           elegido={elegido}
+           setElegido={setElegido}
+           setVerEdicion={setVerEdicion} 
+           setResetPage={setResetPage} resetPage={resetPage}
 
-
+           
           ></Lista>
 
 
@@ -197,9 +197,9 @@ const Lista = (props) => {
   const handleEditar = (event) => {
     props.setElegido(event)
     console.log(props.elegido)
-
+    
     props.setVerEdicion("block")
-
+    
   }
   React.useEffect(() => {
     if (props.listaEquipos.length > 0 && props.resetPage) {
@@ -209,7 +209,7 @@ const Lista = (props) => {
   }, [props.listaEquipos, props.resetPage]);
   return (
     <Container>
-
+      
       <TableContainer>
         <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
           <TableHead>
@@ -232,11 +232,11 @@ const Lista = (props) => {
                     <EditIcon />
                   </IconButton>
 
-
+                 
 
                 </TableCell>
               </TableRow>
-
+           
             ))}
           </TableBody>
         </Table>

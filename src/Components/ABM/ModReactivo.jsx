@@ -1,29 +1,29 @@
 import React, { useState } from "react";
 import ReplyAllIcon from '@mui/icons-material/ReplyAll';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-// import Dialog from '@mui/material/Dialog';
-// import DialogContent from '@mui/material/DialogContent';
-// import DialogContentText from '@mui/material/DialogContentText';
-// import DialogTitle from '@mui/material/DialogTitle';
-// import Table from '@mui/material/Table';
-// import TableBody from '@mui/material/TableBody';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
 import SendIcon from '@mui/icons-material/Send';
-// import TableContainer from '@mui/material/TableContainer';
+import TableContainer from '@mui/material/TableContainer';
 
 import Typography from '@mui/material/Typography';
-// import Paper from '@mui/material/Paper';
-// import moment from 'moment'
+import Paper from '@mui/material/Paper';
+import moment from 'moment'
 import Grid from '@mui/material/Grid';
-// import laboratorio from '../Image/biologia.png';
-import { TextField, ThemeProvider } from '@mui/material';
+import laboratorio from '../Image/biologia.png';
+import { Autocomplete, TextField, ThemeProvider } from '@mui/material';
 import Button from '@mui/material/Button';
 import Theme1 from '../Theme/Theme1';
 
 import { useEffect } from "react";
-// import FormControl from '@mui/material/FormControl';
-// import MenuItem from '@mui/material/MenuItem';
-// import Select from '@mui/material/Select';
-// import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
 import PopUp from "./PopUp";
 
 import updateReactivo from "../../Services/updateReactivos";
@@ -142,7 +142,7 @@ function ModReactivo(
                             autoComplete="descripcion"
                             autoFocus
                             onChange={modDescripcion}
-                            inputProps={{ minLength: 5, maxLength: 50 }}
+                            inputProps={{ minLength: 5, maxLength: 50}}
                             required
                         />
 
@@ -207,15 +207,15 @@ function ModReactivo(
                         height={30}
                         bgcolor={"error"}
                         borderRadius={2}
-                        sx={{ mt: 3, mb: 2, mr: 2 }}
+                        sx={{ mt: 3, mb: 2, mr: 2}}
 
                     >
                         <Button fullWidth
                             margin="normal"
                             variant="contained"
                             color="error"
-                            startIcon={<DeleteForeverIcon />}
-
+                            startIcon={<DeleteForeverIcon/>}
+                            
                             style={{ borderRadius: 8 }}
                             styled={{ textTransform: 'none' }}
                             sx={{ height: 50 }}
@@ -282,7 +282,7 @@ function ModReactivo(
             {/* </DialogContent>
             </Dialog> */}
 
-            <PopUp
+                <PopUp
                 open={openMensaje}
                 setOpen={setOpenMensaje}
                 handleClose={() => setOpenMensaje(false)}

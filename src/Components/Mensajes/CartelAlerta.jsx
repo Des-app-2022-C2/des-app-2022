@@ -24,7 +24,7 @@ const CartelAlerta = (props) => {
         }}
       >
         <Card sx={{
-          display: 'flex',
+         display: 'flex',
           p: 2,
           height: 110,
           fontWeight: 900,
@@ -37,17 +37,17 @@ const CartelAlerta = (props) => {
             alt="error"
           />
           <Box >
-            <CardContent sx={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
-              <Typography variant="h9" align="center" sx={{ minWidth: 250, fontWeight: 500 }}>  {props.mensajeAlerta} </Typography>
-            </CardContent>
+          <CardContent sx={{ display: 'flex', flexDirection: 'column',textAlign: 'center' }}>
+            <Typography variant="h9" align="center" sx={{minWidth:250, fontWeight: 500 }}>  {props.mensajeAlerta} </Typography>
+          </CardContent>
 
-          </Box>
+        </Box>
 
 
 
-        </Card>
+      </Card>
 
-      </Popover>
+    </Popover>
 
     </div >
   )

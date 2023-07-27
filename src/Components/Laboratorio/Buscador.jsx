@@ -18,36 +18,36 @@ const Buscador = (props) => {
 		props.onBuscar(term);
 	};
 	const handleClear = () => {
-		setTerm('');
-		props.onBuscar('');
+			setTerm('');
+			props.onBuscar('');
 	};
 	return (
 		<Grid component="form" onSubmit={handleSubmit}>
 			<TextField
 				placeholder={props.placeholder}
-				type="text"
-				variant="outlined"
-				fullWidthprops
-				size="small"
-				onChange={handleInputChange}
+   			type="text"
+   			variant="outlined"
+   			fullWidthprops
+   			size="small"
+   			onChange={handleInputChange}
 				value={term}
-				InputProps={{
-					startAdornment: (
-						<InputAdornment position="start">
-							<SearchIcon />
-						</InputAdornment>
-					),
+   			InputProps={{
+       		startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon />
+            </InputAdornment>
+            ),
 					endAdornment: term && (
 						<InputAdornment position="end">
 							<IconButton type="button" aria-label="clear" onClick={handleClear}>
-								<ClearIcon />
+								<ClearIcon/>
 							</IconButton>
 						</InputAdornment>
 					)
-				}}
-			/>
-		</Grid>
-
-	);
+         }}
+		/>
+		</Grid>	
+    
+  );
 }
 export default Buscador;

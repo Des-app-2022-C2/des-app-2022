@@ -27,13 +27,13 @@ import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import PopUp from "./PopUp";
 
-function AltaUsuario({ open = { open }, setOpen = { setOpen }, scroll = { scroll }, handleClose = { handleClose }, }) {
-
+function AltaUsuario({open = { open }, setOpen = { setOpen }, scroll = { scroll }, handleClose = { handleClose },}) {
+    
     const [openMensaje, setOpenMensaje] = useState(false);
     const [mensajeSalida, setMensajeSalida] = useState("");
     const [error2, setError2] = useState("none")
     const [perfil, setPerfil] = useState("")
-    const [ver, setVer] = useState("none")
+    const [ver,setVer]=useState("none")
     const [email, setEmail] = useState("");
     const [error, setError] = useState({
         error: false,
@@ -41,7 +41,7 @@ function AltaUsuario({ open = { open }, setOpen = { setOpen }, scroll = { scroll
     });
     const guardarPerfil = (perfil) => {
         setPerfil(perfil);
-        if (perfil === "LABORATORIO") { setVer("block") } else { setVer("none") }
+        if (perfil==="LABORATORIO"){setVer("block")} else{setVer("none")}
     }
     const emailValidation = (email) => {
         // expresion regular para validar email
@@ -108,13 +108,13 @@ function AltaUsuario({ open = { open }, setOpen = { setOpen }, scroll = { scroll
 
     };
     useEffect(() => {
-
-
-        return () => {
-
-        }
+     
+    
+      return () => {
+       
+      }
     }, [perfil])
-
+    
 
 
     return (
@@ -127,7 +127,7 @@ function AltaUsuario({ open = { open }, setOpen = { setOpen }, scroll = { scroll
                 aria-labelledby="scroll-dialog-title"
                 aria-describedby="scroll-dialog-description"
                 fullWidth
-                sx={{ padding: 2 }}
+                sx={{ padding: 2}}
 
             >
 
@@ -184,7 +184,7 @@ function AltaUsuario({ open = { open }, setOpen = { setOpen }, scroll = { scroll
                                     id="usuario"
                                     label="Usuario"
                                     name="usuario"
-                                    inputProps={{ minLength: 6, maxLength: 15 }}
+                                    inputProps={{ minLength: 6, maxLength: 15}}
                                     InputLabelProps={{
                                         shrink: true
                                     }}
@@ -204,7 +204,7 @@ function AltaUsuario({ open = { open }, setOpen = { setOpen }, scroll = { scroll
                                     label="Contraseña"
                                     name="contrasenia"
                                     type="password"
-                                    inputProps={{ minLength: 6, maxLength: 50 }}
+                                    inputProps={{ minLength: 6, maxLength: 50}}
                                     InputLabelProps={{
                                         shrink: true
                                     }}
@@ -229,7 +229,7 @@ function AltaUsuario({ open = { open }, setOpen = { setOpen }, scroll = { scroll
                                     id="nombre"
                                     label="Nombre"
                                     name="nombre"
-                                    inputProps={{ minLength: 2, maxLength: 30 }}
+                                    inputProps={{ minLength: 2, maxLength: 30}}
                                     InputLabelProps={{
                                         shrink: true
                                     }}
@@ -246,7 +246,7 @@ function AltaUsuario({ open = { open }, setOpen = { setOpen }, scroll = { scroll
                                     id="apellido"
                                     label="Apellido"
                                     name="apellido"
-                                    inputProps={{ minLength: 2, maxLength: 30 }}
+                                    inputProps={{ minLength: 2, maxLength: 30}}
                                     InputLabelProps={{
                                         shrink: true
                                     }}
@@ -287,8 +287,8 @@ function AltaUsuario({ open = { open }, setOpen = { setOpen }, scroll = { scroll
                                 />
                             </Grid>
 
-                            <Grid item xs={4} container justifyContent="center" sx={{ marginLeft: 4 }} >
-                                <TextField
+                            <Grid item xs={4} container justifyContent="center"sx={{marginLeft: 4}} >
+                            <TextField
                                     sx={{ marginTop: 1 }}
                                     fullWidth
                                     id="dni"
@@ -297,7 +297,7 @@ function AltaUsuario({ open = { open }, setOpen = { setOpen }, scroll = { scroll
                                     label="DNI"
                                     type="number"
                                     required
-
+                                    
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
@@ -316,7 +316,7 @@ function AltaUsuario({ open = { open }, setOpen = { setOpen }, scroll = { scroll
                             justifyContent="start"
                             alignItems="center" spacing={{ xs: 1, md: 1 }} columns={{ xs: 12 }} >
 
-
+                            
 
                             <Grid item xs={6} container justifyContent="center" >
                                 <TextField
@@ -331,7 +331,7 @@ function AltaUsuario({ open = { open }, setOpen = { setOpen }, scroll = { scroll
                                     helperText={error.message}
                                     onChange={(e) => setEmail(e.target.value)}
                                     value={email}
-                                    inputProps={{ minLength: 5, maxLength: 30 }}
+                                    inputProps={{ minLength: 5, maxLength: 30}}
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
@@ -345,7 +345,7 @@ function AltaUsuario({ open = { open }, setOpen = { setOpen }, scroll = { scroll
                             justifyContent="start"
                             alignItems="center" spacing={{ xs: 1, md: 1 }} columns={{ xs: 12 }} >
 
-                            <Grid item xs={6} container justifyContent="center" marginTop={1}
+                            <Grid item xs={6} container justifyContent="center" marginTop={1} 
                             // marginLeft={1}
                             >
                                 <FormControl fullWidth>
@@ -363,7 +363,7 @@ function AltaUsuario({ open = { open }, setOpen = { setOpen }, scroll = { scroll
                                         required
                                     >
 
-
+                                      
                                         <MenuItem sx={{ fontSize: 12 }} value={"DOCENTE"}>DOCENTE</MenuItem>
                                         <MenuItem sx={{ fontSize: 12 }} value={"LABORATORIO"}>LABORATORIO</MenuItem>
 
@@ -402,8 +402,8 @@ function AltaUsuario({ open = { open }, setOpen = { setOpen }, scroll = { scroll
 
 
 
-
-
+  
+  
 
                         <Grid container direction="row"
                             justifyContent="space-around"
@@ -513,7 +513,7 @@ const UsuarioDadoAlta = ({ usuario }) => {
             {/*<p>
             <strong> Editor: </strong> {usuario.editor ? "SI" : "NO"}
             </p>*/}
-
+            
         </div>
     )
 }

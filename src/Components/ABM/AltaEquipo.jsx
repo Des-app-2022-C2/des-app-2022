@@ -7,13 +7,18 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import SendIcon from '@mui/icons-material/Send';
+// import TableContainer from '@mui/material/TableContainer';
+
 import Typography from '@mui/material/Typography';
+// import Paper from '@mui/material/Paper';
+// import moment from 'moment'
 import Grid from '@mui/material/Grid';
 import laboratorio from '../Image/biologia.png';
 import { Autocomplete, TextField, ThemeProvider } from '@mui/material';
 import Button from '@mui/material/Button';
 import Theme1 from '../Theme/Theme1';
 import postEquipo from "../../Services/postEquipo";
+// import { useEffect } from "react";
 import FormControl from '@mui/material/FormControl';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -30,7 +35,7 @@ function AltaEquipo(
 ) {
     const [openMensaje, setOpenMensaje] = useState(false);
     const [mensajeSalida, setMensajeSalida] = useState("");
-    const [error, setError] = useState("none")
+    const [error,setError]=useState("none")
     const cargaEquipo = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -38,23 +43,23 @@ function AltaEquipo(
         console.log(data.get('descripcion'));
         console.log(data.get('stock'));
 
-        if (data.get('clase') !== "" && data.get('descripcion') !== "" && data.get('stock') !== "") {
+        if (data.get('clase') !== "" &&  data.get('descripcion') !== "" && data.get('stock') !== "") {
             setError("none")
-
-            const dato = {
-                "clase": data.get('clase'),
-                "descripcion": (data.get('descripcion').toUpperCase()),
-                "stock": parseInt(data.get('stock')),
-                "unidadMedida": "UNI"
-            }
-
-            postEquipo(dato)
-            setError("none")
-            setOpen(false);
-            setOpenMensaje(true);
-            setMensajeSalida(dato)
+       
+        const dato = {
+            "clase": data.get('clase'),
+            "descripcion": (data.get('descripcion').toUpperCase()),
+            "stock": parseInt(data.get('stock')),
+            "unidadMedida": "UNI"
         }
-        else { setError("block") }
+       
+        postEquipo(dato)
+        setError("none")
+        setOpen(false);
+        setOpenMensaje(true);
+        setMensajeSalida(dato)
+    }
+        else { setError("block")}
 
 
     };
@@ -70,16 +75,23 @@ function AltaEquipo(
                 aria-labelledby="scroll-dialog-title"
                 aria-describedby="scroll-dialog-description"
                 fullWidth
-                sx={{
-                    padding: 2,
+                sx={{padding: 2, 
                 }}
 
             >
-
+                
                 <DialogContent
                     dividers={scroll === 'paper'
                     }
-                    sx={{ padding: 2, margin: 3 }}
+                    sx={{
+                        /*'--Grid-borderWidth': '1px', borderTop: 'var(--Grid-borderWidth) solid',
+                        borderLeft: 'var(--Grid-borderWidth) solid',
+                        borderRight: 'var(--Grid-borderWidth) solid',
+                        borderBottom: 'var(--Grid-borderWidth) solid',
+                        borderColor: 'divider',*/ padding: 2, margin: 3
+
+                    }}
+
                 >
 
 
@@ -100,7 +112,7 @@ function AltaEquipo(
                                     Equipo
                                 </Typography>
                             </Grid>
-                            <Grid item xs={6} display={error} container justifyContent="start">
+                            <Grid item xs={6}  display={error} container justifyContent="start">
                                 <Typography sx={{ fontSize: 20 }} color="error">
                                     FALTAN CARGAR DATOS
                                 </Typography>
@@ -120,8 +132,9 @@ function AltaEquipo(
                                     id="descripcion"
                                     label="Descripcion"
                                     name="descripcion"
-                                    inputProps={{ minLength: 5, maxLength: 50 }}
+                                    inputProps={{ minLength: 5, maxLength: 50}}
                                     InputLabelProps={{ shrink: true }}
+                                    // autoComplete="descripcion"
                                     autoFocus
                                     required
                                 />
@@ -188,7 +201,7 @@ function AltaEquipo(
                             </Grid>
 
                         </Grid>
-
+     
 
                         <Grid container direction="row"
                             justifyContent="space-around"
@@ -245,7 +258,7 @@ function AltaEquipo(
 
                     </Grid>
 
-
+                 
 
 
 

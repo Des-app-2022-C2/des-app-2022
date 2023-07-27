@@ -115,10 +115,10 @@ function PedidoDetalle(
                                     (<div>{
                                         lista_equipos.map((row) => (
 
-
+                                           
                                             // sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
 
-                                            <Grid key={(row.equipo._id).toString()} container direction="row"
+                                            <Grid  key={(row.equipo._id).toString()} container direction="row"
                                                 alignItems="center" spacing={{ xs: 2, md: 2 }} columns={{ xs: 12 }} >
 
                                                 <Grid item xs={6} container justifyContent="start" >
@@ -160,9 +160,9 @@ function PedidoDetalle(
                                 <TableBody>{(lista_materiales.length) > 0
                                     ?
                                     (<div>
-                                        {lista_materiales.map((row, index) => (
+                                        {lista_materiales.map((row,index) => (
                                             // key={row._id}
-                                            <Grid key={(row.material._id).toString()} container direction="row" alignItems="center" spacing={{ xs: 2, md: 2 }} columns={{ xs: 12 }} >
+                                            <Grid  key={(row.material._id).toString()} container direction="row" alignItems="center" spacing={{ xs: 2, md: 2 }} columns={{ xs: 12 }} >
                                                 <Grid item xs={6} container justifyContent="start" >
                                                     {row.material.descripcion}
                                                 </Grid>
@@ -214,7 +214,7 @@ function PedidoDetalle(
                                     {/* <Grid item xs={1} container justifyContent="center" >
                                         Otro Disolv
                                     </Grid> */}
-                                    {/*  <Grid item xs={1} container justifyContent="center" >
+                                   {/*  <Grid item xs={1} container justifyContent="center" >
                                         Cant Total
                                     </Grid> */}
                                     {/* <Grid item xs={1} container justifyContent="center" >
@@ -254,13 +254,13 @@ function PedidoDetalle(
                                                     {row.concentracion_medida}
                                                 </Grid>
                                                 <Grid item xs={2} container justifyContent="center" >
-                                                    {(row.disolvente === "otro")
+                                                    {(row.disolvente === "otro") 
                                                         ?
                                                         (<div>
-                                                            {row.otro_disolvente_descripcion}
+                                                        {row.otro_disolvente_descripcion}
                                                         </div>)
                                                         : (<div>{row.disolvente} </div>)
-                                                    }
+                                                    }                                                   
                                                 </Grid>
                                                 {/* <Grid item xs={1} container justifyContent="center" >
                                                     {row.otro_disolvente_descripcion}

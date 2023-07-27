@@ -25,10 +25,10 @@ function PedidoDetalle(
         scroll = { scroll },
         handleClose = { handleClose },
         pedido = { pedido },
-
+        
     }
 ) {
-
+  
     const {
         _id,
         numero_tp,
@@ -241,7 +241,7 @@ function PedidoDetalle(
                                                 </Grid>
                                                 <Grid item xs={2} container justifyContent="center" >
                                                     {row.cantidad}
-                                                </Grid>
+                                                </Grid> 
                                                 <Grid item xs={1} container justifyContent="center" >
                                                     {row.un_medida}
                                                 </Grid>
@@ -252,13 +252,13 @@ function PedidoDetalle(
                                                     {row.concentracion_medida}
                                                 </Grid>
                                                 <Grid item xs={2} container justifyContent="center" >
-                                                    {(row.disolvente === "otro")
-                                                        ?
-                                                        (<div>
+                                                    {(row.disolvente === "otro") 
+                                                            ?
+                                                            (<div>
                                                             {row.otro_disolvente_descripcion}
-                                                        </div>)
-                                                        : (<div>{row.disolvente} </div>)
-                                                    }
+                                                            </div>)
+                                                            : (<div>{row.disolvente} </div>)
+                                                    }      
                                                     {/* {row.disolvente} */}
                                                 </Grid>
                                                 {/* <Grid item xs={1} container justifyContent="center" >
@@ -298,14 +298,14 @@ function PedidoDetalle(
                                 descripcion={descripcion}
                                 tipo_pedido={tipo_pedido}
                                 materia={materia}
-                                handleClose={handleClose}
+                                handleClose = {handleClose}
                             ></AsignarLaboratorio>
 
                         </Grid>
 
 
                     </DialogContentText>
-
+                   
                 </DialogContent>
 
 

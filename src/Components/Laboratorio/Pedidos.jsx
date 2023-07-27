@@ -7,7 +7,7 @@ import Theme1 from '../Theme/Theme1';
 import Header from '../Header/Header'
 import { ThemeProvider } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
-import NoEncontrados from "../Mensajes/NoEncontrados"
+import NoEncontrados from "../Mensajes/NoEncontrados" 
 import Filtros from "./Filtros";
 import { axiosGetPedido } from '../../Services/getPedidosService';
 import FilterListIcon from '@mui/icons-material/FilterList';
@@ -55,12 +55,12 @@ function Pedidos() {
 
 
   const cargarEstado = (event) => {
-
+ 
     event.preventDefault();
     console.log(event.target.value)
-
+   
     guardarEstadoPedido(event.target.value)
-
+    
 
 
 
@@ -83,7 +83,7 @@ function Pedidos() {
   useEffect(() => {
 
     cargarNuevosPedidos()
-    console.log("se renderiza");
+  console.log("se renderiza");
 
 
   }, [tipo_pedido, fecha_fin, edificio])
@@ -92,7 +92,7 @@ function Pedidos() {
     let mounted = true;
     const userActual = JSON.parse(localStorage.getItem('usuario'));
     setEsAdmin(userActual.admin)
-
+    
     getListaPedidos()
       .then(items => {
         if (mounted) {
@@ -105,22 +105,22 @@ function Pedidos() {
 
   return (
     <ThemeProvider theme={Theme1}>
-
+     
       <Box sx={{ flexGrow: 1, m: 2 }}>
         <Header texto={texto} isUserAdmin={true}></Header>
       </Box>
-
+      
       <Box sx={{ flexGrow: 1, m: 2 }}>
         <Grid container columns={12} justifyContent="flex-end" direction="row" alignItems="flex-start">
           <Grid item xs={1} align="center"  >
-            <Card
+          <Card 
 
             // style={{ color: "#b4e0bc", borderRadius: 15 }}
             >
-              <CardActionArea onClick={handleClickOpen('body')}>
-                <FilterListIcon fontSize="large" style={{ color: "#b4e0bc" }} />
-              </CardActionArea>
-            </Card>
+            <CardActionArea onClick={handleClickOpen('body')}>
+              <FilterListIcon fontSize="large"  style={ {color: "#b4e0bc"}}/>
+            </CardActionArea>
+          </Card>
           </Grid>
         </Grid>
       </Box>
@@ -140,9 +140,9 @@ function Pedidos() {
         scroll={scroll}
 
       />
-
-
-
+  
+  
+  
 
       {(listaPedidos.length < 1) ?
         (<Box sx={{ flexGrow: 1, md: 2 }}><NoEncontrados /></Box>)

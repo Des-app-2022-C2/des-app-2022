@@ -15,7 +15,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination'
 import { ThemeProvider } from '@mui/material/styles';
 import Theme1 from '../Theme/Theme1';
-import { getListaMaterialesFiltrada } from "../../Services/getService";
+import {getListaMaterialesFiltrada } from "../../Services/getService";
 import pipeta from '../Image/pipeta.png';
 import Buscador from './Buscador';
 import AltaMaterial from '../ABM/AltaMaterial';
@@ -27,12 +27,12 @@ export default function Materiales() {
   const [listaMateriales, setListaMateriales] = useState([]);
   const [busqueda, setBusqueda] = useState('');
   const [resetPage, setResetPage] = useState(false);
-
-  const [verEdicion, setVerEdicion] = useState("none")
+ 
+  const [verEdicion,setVerEdicion]=useState("none")
   const [open, setOpen] = React.useState("");
-
+  
   const [scroll, setScroll] = React.useState('paper');
-  const [elegido, setElegido] = useState({});
+  const [elegido,setElegido]=useState({});
 
   const handleClickOpen = (scrollType) => () => {
     setOpen(true);
@@ -50,13 +50,13 @@ export default function Materiales() {
     getListaMaterialesFiltrada(busqueda)
       .then((materiales) => setListaMateriales(materiales))
       .catch((error) => console.error(error));
-  }, [busqueda, open, verEdicion]);
+  }, [busqueda,open,verEdicion]);
 
   const handleBuscar = (term) => {
     setBusqueda(term);
     setResetPage(true);
   };
-
+ 
   return (
     <ThemeProvider theme={Theme1}>
 
@@ -64,67 +64,67 @@ export default function Materiales() {
 
         <Header texto={'Laboratorio'} isUserAdmin={true}>
         </Header>
-
+        
       </Box>
-      <Container component="main" color="primary" sx={{ marginTop: 5 }}>
-        <Grid container
-          sx={{
-            '--Grid-borderWidth': '1px', borderTop: 'var(--Grid-borderWidth) solid',
-            borderLeft: 'var(--Grid-borderWidth) solid',
-            borderRight: 'var(--Grid-borderWidth) solid',
-            borderBottom: 'var(--Grid-borderWidth) solid',
-            borderColor: 'divider', paddingX: 2, borderRadius: 4, paddingY: 1, marginBottom: 4, marginX: 10,
-          }}
-          spacing={{ xs: 1, md: 1 }} columns={{ xs: 12 }}>
+      <Container component="main" color="primary" sx = {{marginTop: 5}}>
+      <Grid container
+            sx={{
+                '--Grid-borderWidth': '1px', borderTop: 'var(--Grid-borderWidth) solid',
+                borderLeft: 'var(--Grid-borderWidth) solid',
+                borderRight: 'var(--Grid-borderWidth) solid',
+                borderBottom: 'var(--Grid-borderWidth) solid',
+                borderColor: 'divider', paddingX: 2, borderRadius: 4, paddingY: 1, marginBottom: 4, marginX: 10,
+            }}
+            spacing={{ xs: 1, md: 1 }} columns={{ xs: 12 }}>
           <Grid container direction="row"
-            justifyContent="start"
-            alignItems="center">
-            <Grid item xs={1} container justifyContent="center"  >
-              <img width={30} alt="" heigth={30} src={pipeta} />
+                justifyContent="start"
+                alignItems="center">
+                <Grid item xs={1} container justifyContent="center"  >
+                  <img width={30} alt="" heigth={30} src={pipeta} />
+                </Grid>
+                <Grid item xs={3} container justifyContent="start">
+                    <Typography sx={{ fontSize: 30 }} color="text.secondary">
+                      Materiales
+                    </Typography>
+                </Grid>
+                <Grid item xs={3} container justifyContent="center">
+                  <Buscador onBuscar={handleBuscar} placeholder={"Buscar por descripción"}></Buscador>
+                </Grid>
+                <Grid item xs={4} container justifyContent="flex-end">
+                  <NuevoMaterial 
+                    open={open}
+                    setOpen={setOpen}
+                    handleClose={handleClose}
+                    scroll={scroll}
+                    handleClickOpen={handleClickOpen}
+                  
+                  ></NuevoMaterial>
+                </Grid>
             </Grid>
-            <Grid item xs={3} container justifyContent="start">
-              <Typography sx={{ fontSize: 30 }} color="text.secondary">
-                Materiales
-              </Typography>
-            </Grid>
-            <Grid item xs={3} container justifyContent="center">
-              <Buscador onBuscar={handleBuscar} placeholder={"Buscar por descripción"}></Buscador>
-            </Grid>
-            <Grid item xs={4} container justifyContent="flex-end">
-              <NuevoMaterial
-                open={open}
-                setOpen={setOpen}
-                handleClose={handleClose}
-                scroll={scroll}
-                handleClickOpen={handleClickOpen}
-
-              ></NuevoMaterial>
-            </Grid>
-          </Grid>
-          <Grid container direction="row"
+            <Grid container direction="row"
             justifyContent="start"
             alignItems="center"
             display={verEdicion}>
-            <ModMaterial
+              <ModMaterial
               setVerEdicion={setVerEdicion}
               elegido={elegido}
               setElegido={setElegido}
 
-            />
-          </Grid>
+              />
+            </Grid>
 
 
 
 
 
 
-          <Lista listaMateriales={listaMateriales}
-            setResetPage={setResetPage} resetPage={resetPage}
-            elegido={elegido}
-            setElegido={setElegido}
-            setVerEdicion={setVerEdicion}   >
+          <Lista listaMateriales={listaMateriales} 
+          setResetPage={setResetPage} resetPage={resetPage}
+           elegido={elegido}
+           setElegido={setElegido}
+           setVerEdicion={setVerEdicion}   >
           </Lista>
-        </Grid>
+      </Grid>
       </Container>
     </ThemeProvider>
   )
@@ -132,11 +132,11 @@ export default function Materiales() {
 
 const NuevoMaterial = (
   { open = { open },
-    setOpen = { setOpen },
-    scroll = { scroll },
-    handleClose = { handleClose },
-    handleClickOpen = { handleClickOpen }
-  }
+  setOpen = { setOpen },
+  scroll = { scroll },
+  handleClose = { handleClose },
+  handleClickOpen = { handleClickOpen }
+}
 ) => {
   // const handleNuevoMaterial = (event) => {
   //   console.log("Nuevo Material"); // quitar
@@ -149,7 +149,7 @@ const NuevoMaterial = (
         margin="normal"
         variant="contained"
         color="primary"
-        size="large"
+		size="large"
         onClick={handleClickOpen('body')}
       >
         NUEVO MATERIAL
@@ -182,14 +182,14 @@ const Lista = (props) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-
+  
   const handleEditar = (event) => {
     console.log(event);
     props.setElegido(event)
     console.log(props.elegido)
-    console.log(event);
+    console.log(event); 
     props.setVerEdicion("block")
-    // quitar
+     // quitar
   }
   React.useEffect(() => {
     if (props.listaMateriales.length > 0 && props.resetPage) {
@@ -209,7 +209,7 @@ const Lista = (props) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {displayedMateriales.map((row, index) => (
+            {displayedMateriales.map((row,index) => (
               <TableRow
                 key={index}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -222,21 +222,21 @@ const Lista = (props) => {
                   </IconButton>
                 </TableCell>
               </TableRow>
-            ))}
+          ))}
           </TableBody>
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[5, 10, 25]}
-        component="div"
-        count={props.listaMateriales.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-        labelRowsPerPage={"Elementos por página"}
-        labelDisplayedRows={({ from, to, count }) => `${from}-${to} de ${count}`}
-      />
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={props.listaMateriales.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+          labelRowsPerPage={"Elementos por página"}
+          labelDisplayedRows={({ from, to, count }) => `${from}-${to} de ${count}`}
+        />
     </Container>
   )
 }

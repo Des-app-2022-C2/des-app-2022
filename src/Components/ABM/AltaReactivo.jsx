@@ -20,7 +20,7 @@ import { Autocomplete, TextField, ThemeProvider } from '@mui/material';
 import Button from '@mui/material/Button';
 import Theme1 from '../Theme/Theme1';
 import postReactivo from "../../Services/postReactivo";
-
+ 
 import { useEffect } from "react";
 import FormControl from '@mui/material/FormControl';
 import MenuItem from '@mui/material/MenuItem';
@@ -36,7 +36,7 @@ function AltaReactivo(
 
     }
 ) {
-    const [error, setError] = useState("none")
+    const [error,setError]=useState("none")
     const [openMensaje, setOpenMensaje] = useState(false);
     const [mensajeSalida, setMensajeSalida] = useState("");
     const cargaReactivo = async (event) => {
@@ -46,22 +46,22 @@ function AltaReactivo(
         console.log(data.get('descripcion'));
         console.log(data.get('stock'));
 
-        if (data.get('cas') != "" && data.get('descripcion') != "" && data.get('stock') != "") {
+        if (data.get('cas') != "" &&  data.get('descripcion') != "" && data.get('stock') != "") {
             setError("none")
-
-            const dato = {
-                "cas": data.get('cas'),
-                "descripcion": (data.get('descripcion').toUpperCase()),
-                "stock": parseInt(data.get('stock'))
-            }
-
-            postReactivo(dato)
-            setError("none")
-            setOpen(false);
-            setOpenMensaje(true);
-            setMensajeSalida(dato)
-        }
-        else { setError("block") }
+       
+        const dato = {
+            "cas": data.get('cas'),
+            "descripcion": (data.get('descripcion').toUpperCase()),
+            "stock": parseInt(data.get('stock'))
+                }
+       
+        postReactivo(dato)
+        setError("none")
+        setOpen(false);
+        setOpenMensaje(true);
+        setMensajeSalida(dato)
+    }
+        else { setError("block")}
 
 
     };
@@ -77,10 +77,10 @@ function AltaReactivo(
                 aria-labelledby="scroll-dialog-title"
                 aria-describedby="scroll-dialog-description"
                 fullWidth
-                sx={{ padding: 2 }}
+                sx={{padding: 2}}
 
             >
-
+                
                 <DialogContent
                     dividers={scroll === 'paper'
                     }
@@ -113,7 +113,7 @@ function AltaReactivo(
                                     Reactivo
                                 </Typography>
                             </Grid>
-                            <Grid item xs={6} display={error} container justifyContent="start">
+                            <Grid item xs={6}  display={error} container justifyContent="start">
                                 <Typography sx={{ fontSize: 20 }} color="error">
                                     FALTAN CARGAR DATOS
                                 </Typography>
@@ -133,7 +133,7 @@ function AltaReactivo(
                                     id="descripcion"
                                     label="Descripcion"
                                     name="descripcion"
-                                    inputProps={{ minLength: 5, maxLength: 50 }}
+                                    inputProps={{ minLength: 5, maxLength: 50}}
                                     InputLabelProps={{ shrink: true }}
                                     // autoComplete="descripcion"
                                     autoFocus
@@ -148,20 +148,20 @@ function AltaReactivo(
                                 alignItems="center" spacing={{ xs: 1, md: 1 }} columns={{ xs: 12 }} >
 
                                 <Grid item xs={8} container justifyContent="center" marginTop={1} marginLeft={1}>
+                               
+                                <TextField
+                                    sx={{ marginTop: 1, marginBottom: 1, marginLeft: 0 }}
+                                    fullWidth
+                                    id="cas"
+                                    label="CAS"
+                                    name="cas"
+                                    InputLabelProps={{ shrink: true }}
+                                    // autoComplete="descripcion"
+                                    autoFocus
+                                    required
+                                />
 
-                                    <TextField
-                                        sx={{ marginTop: 1, marginBottom: 1, marginLeft: 0 }}
-                                        fullWidth
-                                        id="cas"
-                                        label="CAS"
-                                        name="cas"
-                                        InputLabelProps={{ shrink: true }}
-                                        // autoComplete="descripcion"
-                                        autoFocus
-                                        required
-                                    />
-
-
+                          
 
                                 </Grid>
 
@@ -190,12 +190,12 @@ function AltaReactivo(
                             </Grid>
 
                         </Grid>
-
+     
 
                         <Grid container direction="row"
                             justifyContent="space-around"
                             columns={{ xs: 12 }} >
-
+                            
                             <Grid item xs={4}
                                 height={50}
                                 bgcolor={"error"}
@@ -247,7 +247,7 @@ function AltaReactivo(
 
                     </Grid>
 
-
+                
 
 
 

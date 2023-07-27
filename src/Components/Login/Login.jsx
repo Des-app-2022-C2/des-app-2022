@@ -38,14 +38,14 @@ export default function Login() {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState("")
   const [mensajeAlerta, setMensajeAlerta] = React.useState("Datos incorrectos, verifique usuario y password")
-
-
-
+ 
+ 
+  
   // ************************************
   const handleClose = () => {
-    setAnchorEl(null);
+      setAnchorEl(null);
 
-    // setMensajeAlerta("Faltan Cargar Datos")
+      // setMensajeAlerta("Faltan Cargar Datos")
   }
 
   const open = Boolean(anchorEl);
@@ -70,13 +70,13 @@ export default function Login() {
 
     const data = new FormData(event.currentTarget);
     const datos = getUsuario(data.get('user'), data.get('password'));
-    const info = event.currentTarget;
+    const info= event.currentTarget;
 
 
     Promise.resolve(datos).then(value => {
       console.log((value).length);
       if ((value).length === 0) {
-
+       
         setAnchorEl(info)
       }
       else {

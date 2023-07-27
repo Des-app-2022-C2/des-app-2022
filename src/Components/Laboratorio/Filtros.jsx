@@ -81,7 +81,7 @@ export default function Filtros(props) {
                         }}
                         spacing={{ xs: 1, md: 1 }} columns={{ xs: 12 }}>
 
-
+                        {/* <Grid item xs={2} container justifyContent="center" marginTop={2} spacing={{ xs: 2, md: 2 }} marginBottom={2}> */}
                         <Grid item xs={2} container  >
 
                             <FormControl fullWidth  >
@@ -97,6 +97,7 @@ export default function Filtros(props) {
                                     label="edificio"
                                     onChange={edificio_elegido}
 
+                                // name='edificio'
                                 >
                                     <MenuItem sx={{ width: 100, fontSize: 14 }} value={"TODOS"}>TODOS</MenuItem>
                                     <MenuItem sx={{ width: 100, fontSize: 14 }} value={"Malvinas"}>MALVINAS</MenuItem>
@@ -124,6 +125,8 @@ export default function Filtros(props) {
                                     value={props.tipo_pedido}
                                     label="estado"
                                     onChange={props.cargarEstado}
+                                // defaultValue={""}
+
 
                                 >
 
@@ -147,12 +150,12 @@ export default function Filtros(props) {
                                 marginTop: 0.5
                             }}>
                             <Typography sx={{ fontSize: 12, minHeight: 45 }} aria-label="simple table" color="text.secondary" >
-
+                            
                                 <legend>INICIO DE BUSQUEDA </legend>
                                 <input
                                     type="date"
                                     fullWidth
-                                    style={{ padding: "1.0 rem", width: "80%", border: "none", color: "grey" }}
+                                    style={{ padding: "1.0 rem", width: "80%", border: "none" , color: "grey"     }}
                                     value={props.fecha_inicio}
                                     onChange={guardar_inicio}
                                     id="fecha_inicio"
@@ -162,16 +165,19 @@ export default function Filtros(props) {
                         </Grid>
 
                         <Grid item xs={2} display="flex" justifyContent={"center"} alignContent={"top"}
-                            sx={{
-                                border: 1, borderColor: 'gris.claro', borderRadius: 1, marginX: 1,
+                        sx={{
+                            border: 1, borderColor: 'gris.claro', borderRadius: 1, marginX: 1,
+                            marginTop: 0.5
+                        }}>
+                            {/* sx={{
+                                border: 1, borderColor: 'gris.claro', borderRadius: 1, minHeigth: 70,
                                 marginTop: 0.5
-                            }}>
-
+                            }}> */}
                             <Typography sx={{ fontSize: 12, minHeight: 45 }} aria-label="simple table" color="text.secondary" >
                                 <legend>FIN DE BUSQUEDA</legend>
                                 <input
                                     type="date"
-                                    style={{ padding: "1.0 rem", width: "80%", border: "none", color: "grey" }}
+                                    style={{ padding: "1.0 rem", width: "80%", border: "none" , color: "grey"     }}
                                     min={props.fecha_inicio}
                                     id="fecha_fin"
                                     name="fecha_fin"

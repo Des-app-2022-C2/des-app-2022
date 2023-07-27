@@ -25,7 +25,7 @@ import ModReactivo from '../ABM/ModReactivo';
 
 
 export default function Reactivos() {
-
+  //const [texto, setEncabezado] = useState("Laboratorio");
   const [listaReactivos, setListaReactivos] = useState([]);
   const [busqueda, setBusqueda] = useState('');
   const [resetPage, setResetPage] = useState(false);

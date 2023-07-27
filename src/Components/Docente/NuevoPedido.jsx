@@ -180,7 +180,7 @@ export default function NuevoPedido() {
   }
 
   const set_IdEquip = (event, value) => {
-    if (value !== null) { setEquipoElegido(value) } else { setAnchorEle(event.currentTarget) };
+      if (value !== null) { setEquipoElegido(value) } else { setAnchorEle(event.currentTarget) };
   };
 
 
@@ -284,47 +284,46 @@ export default function NuevoPedido() {
 
     setTipReactivo(tipo_reactivo);
   }
-  /* borrar datos*/
-  const inicializarReact = () => {
-    setCalReactivo("");
-    setUn_med_reactivo(""); setTipReactivo(""); setDisolReactivo(""); setOtroDisolDesc("");
-    set_cant_react(0); set_med_concentracion("");
-    set_ver_disolvente("none");
-    set_otro_disolvente("none");
-    set_visible_off("block");
-    set_visible_off_med("block");
-    set_ver_med("none")
-    set_visible_off_otro("block")
+/* borrar datos*/
+ const inicializarReact = () => { setCalReactivo("");
+  setUn_med_reactivo(""); setTipReactivo(""); setDisolReactivo("");setOtroDisolDesc("");  
+  set_cant_react(0);set_med_concentracion("");
+  set_ver_disolvente("none");
+  set_otro_disolvente("none");
+  set_visible_off("block");
+  set_visible_off_med("block");
+  set_ver_med("none")
+  set_visible_off_otro("block")
 
-  }
-  const [med_concentracion, set_med_concentracion] = useState("");
-  const setMedidaConcentracion = (event) => { set_med_concentracion(event.target.value); };
+}
+const [med_concentracion,set_med_concentracion]=useState("");
+const setMedidaConcentracion= (event) => { set_med_concentracion(event.target.value); };
+ 
+const [can_react,set_cant_react]=React.useState(0);
+const cargaCantReac = (event) => { set_cant_react(event.target.value); };
 
-  const [can_react, set_cant_react] = React.useState(0);
-  const cargaCantReac = (event) => { set_cant_react(event.target.value); };
-
-  const [otroDisolDesc, setOtroDisolDesc] = React.useState("");
-  const cargaOtroDisol = (event) => { setOtroDisolDesc(event.target.value); };
+const [otroDisolDesc,setOtroDisolDesc]=React.useState("");
+const cargaOtroDisol = (event) => { setOtroDisolDesc(event.target.value); };
   const calReactivo = (event) => { setCalReactivo(event.target.value); };
-
+  
   const med_reactivo = (event) => { setUn_med_reactivo(event.target.value); };
   const cargaReactivos = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-
-
+    
+   
     if (reactivoElegido === null) { setAnchorEleR(event.currentTarget) } else {
-
+    
       var dato = {
         "cantidad": can_react,
         "un_medida": _med_reactivo,
         "calidad": cal_reactivo,
         "concentracion_tipo": _tip_reactivo,
-        "disolvente": _disol_reactivo,
+         "disolvente": _disol_reactivo,
         "otro_disolvente_descripcion": otroDisolDesc,
         "reactivo": reactivoElegido._id
       };
-      if ((med_concentracion.length > 0)) { dato.concentracion_medida = med_concentracion }
+      if((med_concentracion.length>0)){ dato.concentracion_medida=med_concentracion}
 
       const reactivoRepetido = pedidoReactivos.filter(
         elemento => elemento.reactivo === dato.reactivo
