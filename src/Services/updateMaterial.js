@@ -1,20 +1,18 @@
+import axios from 'axios';
+
+
 export default async function updateMaterial(id, data) {
-  
+    const body = JSON.stringify(data);
     try {
-      
-        const requestJson = JSON.stringify(data);
-
-        const response = await fetch('http://localhost:3000/api/material/update/' + id, {
-            method: "PATCH",
-            body: requestJson,
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        });
-        const responseText = await response.text();
-        console.log(responseText);
-    } catch (ex) {
-        console.log(ex);
+      const response = await axios.patch(`${process.env.REACT_APP_API_URL}/api/material/update/${id}`, body, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+      throw error;
     }
-
-};
+  }
+  

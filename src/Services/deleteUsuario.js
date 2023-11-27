@@ -1,14 +1,19 @@
+import axios from 'axios';
+
 export default async function deleteUsuario(id) {
     try {
-        const response = await fetch('http://localhost:3000/api/usuario/delete/' + id, {
-            method: "DELETE",
+        const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/usuario/delete/${id}`, {
             headers: {
                 'Content-Type': 'application/json',
             }
         });
-        const responseText = await response.text();
-        console.log(responseText);
-    } catch (ex) {
-        console.log(ex);
+        if (response.status >= 200 && response.status < 300) {
+            return response.data;
+        } else {
+            throw new Error(`Error en la solicitud DELETE: ${response.status}`);
+        }
+    } catch (error) {
+        console.log(error);
+        throw error;
     }
 }

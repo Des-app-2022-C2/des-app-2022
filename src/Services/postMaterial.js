@@ -1,20 +1,18 @@
-export async function postMaterial(data) {
+import axios from "axios";
 
-    const requestJson = JSON.stringify(data);
-    try {
-      const response = await fetch("http://localhost:3000/api/material/post", {
-        method: "POST",
-        body: requestJson,
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-      const responseText = await response.text();
-      console.log(responseText);
-    } catch (e) {
-      console.log(e);
-    }
-  
-  };
-  export default postMaterial;
-  
+
+export async function postMaterial(data) {
+  const body = JSON.stringify(data);
+  try {
+    const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/material/post`, body, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    console.log(response.data);
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+export default postMaterial;

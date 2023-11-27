@@ -1,4 +1,12 @@
-export function getPedidosPorDni(dni) {
-    return fetch('http://localhost:3000/api/pedido/getAllByDni/' + dni)
-        .then(data => data.json())
+import axios from 'axios';
+
+
+export async function getPedidosPorDni(dni) {
+    try {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/pedido/getAllByDni/${dni}`)
+        return response.data
+      } catch (error) {
+        console.log(error)
+        throw error; 
+      }
 }

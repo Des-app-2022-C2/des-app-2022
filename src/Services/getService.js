@@ -1,63 +1,81 @@
-import axios from 'axios';
+import axios from "axios";
 
 //EQUIPOS
 
-export function getListaEquipos() {
-    return fetch('http://localhost:3000/api/equipo/getAll')
-        .then(data => data.json())
+export async function getListaEquipos() {
+  try {
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/equipo/getAll`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
 }
 export async function getListaEquiposFiltrada(buscar) {
-    var params={};
-    if (buscar.length>0){params.buscar=buscar}
-    try {
-        const response = await axios({
-            method: 'get',params,
-            url: `http://localhost:3000/api/equipos/`,
-            responseType: 'json'
-        });
-        return response.data;
-    } catch (error) {
-        console.log(error);
-    }
-};
-
+  var params = {};
+  if (buscar.length > 0) {
+    params.buscar = buscar;
+  }
+  try {
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/equipo/`, {
+      params,
+      responseType: "json",
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
 //MATERIALES
-export function getListaMateriales() {
-    return fetch('http://localhost:3000/api/material/getAll')
-        .then(data => data.json())
+export async function getListaMateriales() {
+  try {
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/material/getAll`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
 }
 export async function getListaMaterialesFiltrada(buscar) {
-    var params={};
-    if (buscar.length>0){params.buscar=buscar}
-    try {
-        const response = await axios({
-            method: 'get',params,
-            url: `http://localhost:3000/api/materiales/`,
-            responseType: 'json'
-        });
-        return response.data;
-    } catch (error) {
-        console.log(error);
-    }
-};
+  var params = {};
+  if (buscar.length > 0) {
+    params.buscar = buscar;
+  }
+  try {
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/material/`, {
+      params,
+      responseType: "json",
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
 
 // REACTIVOS
-
-export function getListaReactivos() {
-    return fetch('http://localhost:3000/api/reactivo/getAll')
-        .then(data => data.json())
+export async function getListaReactivos() {
+  try {
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/reactivo/getAll`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
 }
 export async function getListaReactivosFiltrada(buscar) {
-    var params={};
-    if (buscar.length>0){params.buscar=buscar}
-    try {
-        const response = await axios({
-            method: 'get',params,
-            url: `http://localhost:3000/api/reactivos/`,
-            responseType: 'json'
-        });
-        return response.data;
-    } catch (error) {
-        console.log(error);
-    }
-};
+  var params = {};
+  if (buscar.length > 0) {
+    params.buscar = buscar;
+  }
+  try {
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/reactivo/`, {
+      params,
+      responseType: "json",
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
