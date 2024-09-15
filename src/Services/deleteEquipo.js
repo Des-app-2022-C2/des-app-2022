@@ -1,14 +1,22 @@
+import axios from 'axios';
+import { token } from "./getToken";
+
 export default async function deleteEquipo(id) {
     try {
-        const response = await fetch('http://localhost:3000/api/equipo/delete/' + id, {
-            method: "DELETE",
-            headers: {
-                'Content-Type': 'application/json',
-            }
+        const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/equipo/delete/${id}`, {
+            headers: {        
+                Authorization: `Bearer ${token()}`,
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              },
         });
-        const responseText = await response.text();
-        console.log(responseText);
-    } catch (ex) {
-        console.log(ex);
+        if (response.status >= 200 && response.status < 300) {
+            return response.data;
+        } else {
+            throw new Error(`Error en la solicitud DELETE: ${response.status}`);
+        }
+    } catch (error) {
+        console.log(error);
+        throw error;
     }
-} 
+}

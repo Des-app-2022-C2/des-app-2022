@@ -1,43 +1,80 @@
-import axios from 'axios';
+import axios from "axios";
+import { token } from "./getToken";
 
-export function getListaPedidos() {
-    return fetch('http://localhost:3000/api/pedido/getAll')
-        .then(data => data.json())
+export async function getListaPedidos() {
+  try {
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_URL}/api/pedido/getAll`,
+      {
+        headers: {
+          Authorization: `Bearer ${token()}`,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
 }
-
 export async function getCantidadPedidos() {
-    const response = await fetch('http://localhost:3000/api/pedido/getAll');
-    const data = await response.json();
-    const cantidad = Object.keys(data).length;
-
-    return cantidad 
-    
+  try {
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_URL}/api/pedido/count`,
+      {
+        headers: {
+          Authorization: `Bearer ${token()}`,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data.count;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 }
 
-
-
-
-export async function axiosGetPedido(fecha_utilizacion, tipo_pedido, fecha_inicio, fecha_fin, edificio)  {
-    console.log(fecha_inicio);
-    var params={}
-    
-    if((tipo_pedido.length>0)&&(tipo_pedido!=="TODOS")){params.tipo_pedido= tipo_pedido}
-    if((edificio.length>0)&&(edificio!=="TODOS")){params.edificio= edificio}
-    if((fecha_inicio.length>0) &&( fecha_fin.length>0)){
-        params.fecha_fin=fecha_fin;params.fecha_inicio=fecha_inicio    }
-    try {
-       
-        const response = await axios({
-            method: 'get',params,
-            
-            url: `http://localhost:3000/api/pedido/`,
-            responseType: 'json'
-        });
-        console.log(response);
-        return response.data;
-    } catch (error) {
-        console.log(error);
+export async function axiosGetPedido(
+  tipo_pedido,
+  fecha_inicio,
+  fecha_fin,
+  edificio,
+  checked,
+  page
+) {
+  var params = {};
+  try {
+    if (tipo_pedido && tipo_pedido !== "TODOS") {
+      params.tipo_pedido = tipo_pedido;
     }
-};
+    if (edificio && edificio !== "TODOS") {
+      params.edificio = edificio;
+    }
+    if (fecha_inicio && fecha_fin) {
+      params.fecha_inicio = fecha_inicio;
+      params.fecha_fin = fecha_fin;
+    }
 
-
+    params.validsOnly = checked;
+    params.page = page;
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_URL}/api/pedido`,
+      {
+        params,
+        headers: {
+          Authorization: `Bearer ${token()}`,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}

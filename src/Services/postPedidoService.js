@@ -1,24 +1,26 @@
-
+import axios from 'axios';
+import { getPedidosPorDni } from './getPedidosPorDNIService';
+import { getListaPedidos } from './getPedidosService';
+import { token } from "./getToken";
 
 export async function postPedido(data) {
-
-  const requestJson = JSON.stringify(data);
+  const body = JSON.stringify(data);
   try {
-    const response = await fetch("http://localhost:3000/api/pedido/post", {
-      method: "POST",
-      body: requestJson,
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    });
-    const responseText = await response.text();
-    console.log(responseText);
-  } catch (ex) {
-    console.log(ex);
+    const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/pedido/post`, body, {
+      headers: {        
+        Authorization: `Bearer ${token()}`,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });    
+    //await getPedidosPorDni(data.docente.dni, "TODOS", "", "", "TODOS", true, 1);
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
-
-};
+}
 export default postPedido;
+
 
 
 

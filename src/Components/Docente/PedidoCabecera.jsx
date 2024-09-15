@@ -98,6 +98,7 @@ const PedidoCabecera = (props) => {
     <div> <Grid container component="form" onSubmit={props.cargaEncabezado} noValidate direction="row"
       justifyContent="space-around"
       alignItems="center"
+      className='pedido-nuevo-form'
 
       sx={{
         '--Grid-borderWidth': '1px', borderTop: 'var(--Grid-borderWidth) solid',
@@ -160,7 +161,7 @@ const PedidoCabecera = (props) => {
             type="date"
             min={formatManiana}
             max={formatTope}
-            defaultValue={formatManiana}
+            defaultValue={formatManiana || ""}
             name='fecha_utilizacion'
             required
             value={fechaUtilCorrecta}
@@ -185,7 +186,7 @@ const PedidoCabecera = (props) => {
             min={"08:00"}
             max={"21:00"}
             value={horaOk}
-            defaultValue={horaOk}
+            defaultValue={horaOk || ""}
             InputLabelProps={{
               shrink: true,
             }}
@@ -295,7 +296,7 @@ const PedidoCabecera = (props) => {
           mensajeAlerta={props.mensajeAlerta}
           handleClose={handleClose}
           id={id}
-          open={open}
+          open={Boolean(open)}
           anchorEl={props.anchorEl}
 
         />
@@ -390,7 +391,7 @@ export default PedidoCabecera
 
 //         </Item>
 
-//       </ThemeProvider>
+//       </>
 
 //     </Popover>);
 // }

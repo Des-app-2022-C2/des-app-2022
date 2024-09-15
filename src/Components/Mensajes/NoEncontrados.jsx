@@ -5,7 +5,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import grey from '@mui/material/colors/grey'
 
-const theme=createTheme({
+const theme = createTheme({
     palette:{
         primary:{
             main:grey[300]
@@ -20,7 +20,7 @@ const theme=createTheme({
 const NoEncontrados = () => {
     return (
         
-        <ThemeProvider theme={theme}>
+        <>
         <Container 
         maxwidth="sm"
         >
@@ -30,7 +30,7 @@ const NoEncontrados = () => {
           </Typography>
         </Box>
         </Container>
-        </ThemeProvider>
+        </>
         
     );
 };
