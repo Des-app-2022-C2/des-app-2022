@@ -3,9 +3,7 @@ import PedidoV1 from "../Docente/PedidoV1";
 import { getListaPedidos } from "../../Services/getPedidosService";
 import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
-import Theme1 from '../Theme/Theme1';
 import Header from '../Header/Header'
-import { ThemeProvider } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import NoEncontrados from "../Mensajes/NoEncontrados"
 import Filtros from "./Filtros";
@@ -24,13 +22,14 @@ function Pedidos() {
   // const { marginTop } = useStyles();
   const [listaPedidos, setListaPedidos] = useState([]);
   const [texto, setEncabezado] = useState("Laboratorio");
-  const [esAdmin, setEsAdmin] = useState(true)
+  const [esAdmin, setEsAdmin] = useState('')
 
   const [edicionActiva, setEdicionActiva] = useState(false)
 
 
 
   /********************************************** */
+
   const [tipo_pedido, setTipoPedido] = React.useState("TODOS");
   const [fecha_utilizacion, set_fecha_utilizacion] = React.useState("");
   const [fecha_inicio, set_fecha_inicio] = React.useState("");
@@ -86,46 +85,43 @@ function Pedidos() {
     console.log("se renderiza");
 
 
-  }, [tipo_pedido, fecha_fin, edificio])
+  }, [tipo_pedido, fecha_fin, fecha_inicio, edificio])
 
   useEffect(() => {
-    let mounted = true;
     const userActual = JSON.parse(localStorage.getItem('usuario'));
-    setEsAdmin(userActual.admin)
-
+    setEsAdmin(userActual.rol)
     getListaPedidos()
       .then(items => {
-        if (mounted) {
-          console.log("voy a setear los pedidos");
+        if (items) {
           setListaPedidos(items)
         }
       })
-    return () => mounted = false;
   }, [])
 
   return (
-    <ThemeProvider theme={Theme1}>
+    <Box>
 
       <Box sx={{ flexGrow: 1, m: 2 }}>
-        <Header texto={texto} isUserAdmin={true}></Header>
+        <Header texto={texto} isUserAdmin={esAdmin}></Header>
       </Box>
 
-      <Box sx={{ flexGrow: 1, m: 2 }}>
+      <Box sx={{ flexGrow: 1, m: 0 }}>
         <Grid container columns={12} justifyContent="flex-end" direction="row" alignItems="flex-start">
           <Grid item xs={1} align="center"  >
             <Card
 
             // style={{ color: "#b4e0bc", borderRadius: 15 }}
             >
-              <CardActionArea onClick={handleClickOpen('body')}>
+              {/* <CardActionArea onClick={handleClickOpen('body')}>
                 <FilterListIcon fontSize="large" style={{ color: "#b4e0bc" }} />
-              </CardActionArea>
+              </CardActionArea> */}
             </Card>
           </Grid>
         </Grid>
       </Box>
       <Filtros
         cargarEstado={cargarEstado}
+        setTipoPedido={setTipoPedido}
         fecha_fin={fecha_fin}
         set_fecha_fin={set_fecha_fin}
         set_fecha_inicio={set_fecha_inicio}
@@ -134,7 +130,7 @@ function Pedidos() {
         set_edificio={set_edificio}
         tipo_pedido={tipo_pedido}
 
-        open={open}
+        open={Boolean(open)}
         setOpen={setOpen}
         handleClose={handleClose}
         scroll={scroll}
@@ -144,31 +140,31 @@ function Pedidos() {
 
 
 
-      {(listaPedidos.length < 1) ?
+      {(listaPedidos && listaPedidos.length < 1) ?
         (<Box sx={{ flexGrow: 1, md: 2 }}><NoEncontrados /></Box>)
         : (
-          <Box sx={{ flexGrow: 1, md: 2 }}>
+          <Box className="main-wrap" sx={{ flexGrow: 1, md: 2 }}>
             <Grid container direction="row"
               sx={{
                 display: 'flex',
                 justifyContent: 'center',
-                p: 8,
-                m: 4,
+                p: 0,
+                m: 0,
               }}
               alignItems="space-between"
-              spacing={{ xs: 2, md: 3 }} columns={{ xs: 3, sm: 6, md: 12 }}>
+              spacing={{ xs: 2, md: 3 }} columns={{ sm: 6,  lg: 12 }}>
 
-              {listaPedidos.map((pedido) => (
+              {listaPedidos?.map((pedido) => (
                 <Grid item xs={3} key={pedido._id}>
 
                   <PedidoV1 key={pedido._id}
-                    pedido={pedido} esAdmin={esAdmin}
+                    pedido={pedido} esAdmin={'lab'}
                     edicionActiva={edicionActiva} setEdicionActiva={setEdicionActiva} />
                 </Grid>
               ))}
             </Grid>
           </Box>)}
-    </ThemeProvider>
+    </Box>
   );
 }
 

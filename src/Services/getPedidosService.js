@@ -1,12 +1,13 @@
 import axios from 'axios';
+import { urlBD } from '../connectDB';
 
 export function getListaPedidos() {
-    return fetch('http://localhost:3000/api/pedido/getAll')
+    return fetch(`${urlBD}/api/pedido/getAll`)
         .then(data => data.json())
 }
 
 export async function getCantidadPedidos() {
-    const response = await fetch('http://localhost:3000/api/pedido/getAll');
+    const response = await fetch(`${urlBD}/api/pedido/getAll`);
     const data = await response.json();
     const cantidad = Object.keys(data).length;
 
@@ -26,11 +27,12 @@ export async function axiosGetPedido(fecha_utilizacion, tipo_pedido, fecha_inici
     if((fecha_inicio.length>0) &&( fecha_fin.length>0)){
         params.fecha_fin=fecha_fin;params.fecha_inicio=fecha_inicio    }
     try {
-       
+        console.log(params)
+       console.log(params.fecha_inicio)
         const response = await axios({
             method: 'get',params,
             
-            url: `http://localhost:3000/api/pedido/`,
+            url: `${urlBD}/api/pedido/`,
             responseType: 'json'
         });
         console.log(response);
